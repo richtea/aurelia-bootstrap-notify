@@ -20,6 +20,7 @@
         "!./node_modules/**/*"
     ],
     "files": [
+        "./_references.ts",
         "./hello-world.ts",
         "./index.ts",
         "./say-service.ts"
