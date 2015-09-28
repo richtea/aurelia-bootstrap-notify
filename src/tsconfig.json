@@ -1,0 +1,38 @@
+{
+    "version": "1.5.3",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "isolatedModules": false,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": true,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./**/*.d.ts",
+        "!./node_modules/**/*"
+    ],
+    "files": [
+        "./hello-world.ts",
+        "./index.ts",
+        "./say-service.ts"
+    ],
+    "bundles": {
+        "test-plugin": {
+            "files": [
+                "index.ts",
+                "hello-world.ts",
+                "say-service.ts"
+            ],
+            "config": {
+                "outDir": "../dts"
+            }
+        }
+    }
+}

@@ -1,9 +1,24 @@
 var gulp = require('gulp');
 var runSequence = require('run-sequence');
-var to5 = require('gulp-babel');
 var paths = require('../paths');
-var compilerOptions = require('../babel-options');
-var assign = Object.assign || require('object.assign');
+var tsproject = require( 'tsproject' );
+var debug = require('gulp-debug');
+var ignore = require('gulp-ignore');
+var rename = require('gulp-rename');
+
+function compileTsProject(outputDir, moduleFormat, target) {
+    // path to named configuration file provided..
+    return tsproject.src( paths.sourceTsConfig, {
+          logLevel: 1,
+          "compilerOptions": {
+            "module": moduleFormat,
+            "target": target
+          }
+        })
+        .pipe(ignore.include(/dts[/\\].*/))
+        .pipe(rename({dirname: outputDir,}))
+        .pipe(gulp.dest(paths.output));
+}
 
 gulp.task('build-html-es6', function () {
   return gulp.src(paths.html)
@@ -11,8 +26,7 @@ gulp.task('build-html-es6', function () {
 });
 
 gulp.task('build-es6', ['build-html-es6'], function () {
-  return gulp.src(paths.source)
-    .pipe(gulp.dest(paths.output + 'es6'));
+  return compileTsProject('es6', 'common', 'es6');
 });
 
 gulp.task('build-html-commonjs', function () {
@@ -21,9 +35,7 @@ gulp.task('build-html-commonjs', function () {
 });
 
 gulp.task('build-commonjs', ['build-html-commonjs'], function () {
-  return gulp.src(paths.source)
-    .pipe(to5(assign({}, compilerOptions, {modules:'common'})))
-    .pipe(gulp.dest(paths.output + 'commonjs'));
+  return compileTsProject('commonjs', 'common', 'es5');
 });
 
 gulp.task('build-html-amd', function () {
@@ -32,9 +44,7 @@ gulp.task('build-html-amd', function () {
 });
 
 gulp.task('build-amd', ['build-html-amd'], function () {
-  return gulp.src(paths.source)
-    .pipe(to5(assign({}, compilerOptions, {modules:'amd'})))
-    .pipe(gulp.dest(paths.output + 'amd'));
+  return compileTsProject('amd', 'amd', 'es5');
 });
 
 gulp.task('build-html-system', function () {
@@ -43,9 +53,7 @@ gulp.task('build-html-system', function () {
 });
 
 gulp.task('build-system', ['build-html-system'], function () {
-  return gulp.src(paths.source)
-    .pipe(to5(assign({}, compilerOptions, {modules:'system'})))
-    .pipe(gulp.dest(paths.output + 'system'));
+  return compileTsProject('system', 'system', 'es5');
 });
 
 gulp.task('build', function(callback) {
