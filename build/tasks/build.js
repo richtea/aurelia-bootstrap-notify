@@ -10,27 +10,23 @@ var tsd = require('gulp-tsd');
 function compileTsProject(outputDir, moduleFormat, target) {
     // path to named configuration file provided..
     return tsproject.src( paths.sourceTsConfig, {
-          logLevel: 2,
+          logLevel: 0,
           "compilerOptions": {
             "module": moduleFormat,
             "target": target
           }
         })
-        .pipe(ignore.include(/dts[/\\].*/))
-        .pipe(rename({dirname: outputDir,}))
+        .pipe(rename(function(path) {
+          // Output the bundles to the output dir
+          path.dirname = path.dirname.replace(/src[\\/]bundle/, outputDir);
+          // Redirect the non-bundled transpiled files to a temp location 
+          path.dirname = path.dirname.replace(/src/, "temp/" + outputDir);
+        }))
         .pipe(gulp.dest(paths.output));
 }
 
 gulp.task('tsd', function (callback) {
-  callback();
-  return;
-  // tsd({
-  //     command: 'reinstall',
-  //     config: './tsd.json'
-  // }, callback);
-
-  // OR
-  // return gulp.src('./gulp_tsd.json').pipe(tsd());
+  return gulp.src('./gulp_tsd.json').pipe(tsd());
 });
 
 gulp.task('build-html-es6', function () {
@@ -39,7 +35,7 @@ gulp.task('build-html-es6', function () {
 });
 
 gulp.task('build-es6', ['build-html-es6', 'tsd'], function () {
-  return compileTsProject('es6', 'common', 'es6');
+  return compileTsProject('es6', 'commonjs', 'es6');
 });
 
 gulp.task('build-html-commonjs', function () {
@@ -48,7 +44,7 @@ gulp.task('build-html-commonjs', function () {
 });
 
 gulp.task('build-commonjs', ['build-html-commonjs', 'tsd'], function () {
-  return compileTsProject('commonjs', 'common', 'es5');
+  return compileTsProject('commonjs', 'commonjs', 'es5');
 });
 
 gulp.task('build-html-amd', function () {

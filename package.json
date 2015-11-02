@@ -45,14 +45,15 @@
     "require-dir": "^0.1.0",
     "run-sequence": "^1.0.2",
     "tsproject": "^1.0.0-rc.2",
-    "typescript": "^1.5.3",
+    "typescript": "^1.6.2",
     "vinyl-paths": "^1.0.0",
     "yargs": "^2.1.1"
   },
   "jspm": {
     "dependencies": {
       "aurelia-framework": "github:aurelia/framework@^0.16.0",
-      "aurelia-logging": "github:aurelia/logging@^0.7.0"
+      "aurelia-logging": "github:aurelia/logging@^0.7.0",
+      "core-js": "npm:core-js@^1.2.3"
     },
     "devDependencies": {
       "traceur": "github:jmcriffey/bower-traceur@0.0.91",

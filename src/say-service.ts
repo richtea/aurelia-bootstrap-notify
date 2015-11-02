@@ -1,7 +1,5 @@
-/// <reference path="./_references.ts"/>
-
 import { LogManager } from "aurelia-framework";
-// import { Logger } from "aurelia-logging";
+import { Logger } from "aurelia-logging";
 
 export class SayService {
   private logger: Logger;

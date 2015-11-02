@@ -1,7 +1,7 @@
-//import { autoinject } from "aurelia-framework";
+import { autoinject } from "aurelia-framework";
 import { SayService } from "./say-service";
 
-//@autoinject
+@autoinject
 export class HelloWorld {
 
   constructor(private sayService: SayService) {
