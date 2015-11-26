@@ -1,46 +1,38 @@
 {
-    "version": "1.5.3",
-    "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "isolatedModules": false,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "declaration": true,
-        "noImplicitAny": false,
-        "removeComments": false,
-        "noLib": false,
-        "preserveConstEnums": true,
-        "suppressImplicitAnyIndexErrors": true
-    },
-    "compileOnSave": false,
-    "filesGlob": [
-        "./index.ts",
-        "../typings/tsd.d.ts",
-        "../jspm_packages/github/aurelia/**/*.d.ts"
-    ],
-    "files": [
-        "index.ts",
-        "../typings/tsd.d.ts",
-        "../jspm_packages/github/aurelia/binding@0.9.1/aurelia-binding.d.ts",
-        "../jspm_packages/github/aurelia/dependency-injection@0.10.1/aurelia-dependency-injection.d.ts",
-        "../jspm_packages/github/aurelia/framework@0.16.0/aurelia-framework.d.ts",
-        "../jspm_packages/github/aurelia/loader@0.9.0/aurelia-loader.d.ts",
-        "../jspm_packages/github/aurelia/logging@0.7.0/aurelia-logging.d.ts",
-        "../jspm_packages/github/aurelia/metadata@0.8.0/aurelia-metadata.d.ts",
-        "../jspm_packages/github/aurelia/path@0.9.0/aurelia-path.d.ts",
-        "../jspm_packages/github/aurelia/task-queue@0.7.0/aurelia-task-queue.d.ts",
-        "../jspm_packages/github/aurelia/templating@0.15.3/aurelia-templating.d.ts"
-    ],
-    "bundles": {
-        "test-plugin": {
-            "files": [
-                "index.ts"
-            ],
-            "config": {
-                "outDir": "./bundle"
-            }
-        }
-    },
-    "exclude": []
+  "version": "1.6.0",
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "isolatedModules": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": false,
+    "noLib": false,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "compileOnSave": false,
+  "filesGlob": [
+    "./*.ts",
+    "../typings/tsd.d.ts",
+    "../jspm_packages/github/aurelia/**/*.d.ts"
+  ],
+  "files": [
+    "../typings/tsd.d.ts",
+    "../jspm_packages/github/aurelia/binding@0.9.1/aurelia-binding.d.ts",
+    "../jspm_packages/github/aurelia/dependency-injection@0.10.1/aurelia-dependency-injection.d.ts",
+    "../jspm_packages/github/aurelia/framework@0.16.0/aurelia-framework.d.ts",
+    "../jspm_packages/github/aurelia/loader@0.9.0/aurelia-loader.d.ts",
+    "../jspm_packages/github/aurelia/logging@0.7.0/aurelia-logging.d.ts",
+    "../jspm_packages/github/aurelia/metadata@0.8.0/aurelia-metadata.d.ts",
+    "../jspm_packages/github/aurelia/path@0.9.0/aurelia-path.d.ts",
+    "../jspm_packages/github/aurelia/task-queue@0.7.0/aurelia-task-queue.d.ts",
+    "../jspm_packages/github/aurelia/templating@0.15.3/aurelia-templating.d.ts",
+    "./hello-world.ts",
+    "./index.ts",
+    "./say-service.ts"
+  ],
+  "exclude": []
 }

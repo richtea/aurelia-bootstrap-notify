@@ -1,3 +1,17 @@
 jspm_packages
 bower_components
 .idea
+.vscode
+src
+build
+test
+typings
+.editorconfig
+.gitignore
+.jshintrc
+.npmignore
+config.js
+gulp_tsd.json
+gulpfile.js
+karma.conf.js
+tsd.json

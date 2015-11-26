@@ -3,6 +3,7 @@
 	"files.exclude": {
 		"node_modules/**": true,
 		"jspm_packages/**": true,
-		"dist/temp/**": true
+		"dist/temp/**": true,
+        "*.tgz": true
 	}
 }

@@ -1,6 +1,20 @@
-export declare function configure(config: any): void;
-export declare class HelloWorld {
+declare module 'test-plugin' {
+	export class SayService {
+	    private logger;
+	    sayHello(): void;
+	}
+
 }
-export declare class SayService {
-    helloWorld(): void;
+declare module 'test-plugin' {
+	import { SayService } from 'say-service';
+	export class HelloWorld {
+	    private sayService;
+	    constructor(sayService: SayService);
+	    onButtonClick(): void;
+	}
+
+}
+declare module 'test-plugin' {
+	export function configure(config: any): void;
+
 }
