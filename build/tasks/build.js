@@ -78,7 +78,8 @@ gulp.task('dts-gen', function(callback) {
   dtsGenerator.default({
     name: paths.pluginName,
     project: './src',
-    out: outputDefFile
+    out: outputDefFile,
+    main: 'test-plugin/index'
   });
   
   return callback();
