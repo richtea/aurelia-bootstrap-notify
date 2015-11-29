@@ -56,10 +56,10 @@
     "yargs": "^2.1.1"
   },
   "jspm": {
-    "main": "dist/amd",
+    "main": "dist/amd/index",
     "format": "amd",
     "directories": {
-      "lib": "dist/amd/index.js"
+      "lib": "dist/amd"
     },
     "dependencies": {
       "aurelia-framework": "github:aurelia/framework@^0.16.0",

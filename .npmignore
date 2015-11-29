@@ -15,3 +15,4 @@ gulp_tsd.json
 gulpfile.js
 karma.conf.js
 tsd.json
+*.tgz
