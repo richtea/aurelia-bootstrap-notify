@@ -14,7 +14,7 @@ module.exports = function(config) {
 
     jspm: {
       // Edit this to your needs
-      loadFiles: ['src/**/*.js', 'test/unit/**/*.js']
+      loadFiles: ['src/**/*.ts', 'test/unit/**/*.ts']
     },
 
 
@@ -30,18 +30,19 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'test/**/*.js': ['babel'],
-      'src/**/*.js': ['babel']
-    },
-    'babelPreprocessor': {
-      options: {
-        sourceMap: 'inline',
-        modules: 'system',
-        moduleIds: false,
-        optional: [
-          "es7.decorators",
-          "es7.classProperties"
-        ]
+          '**/*.ts': ['tsc']
+      },
+  
+    tscPreprocessor: {
+      compilerOptions: {
+          module: "umd",
+          target: "ES5",
+          noImplicitAny: true,
+          removeComments: true,
+          inlineSourceMap: true,
+          preserveConstEnums: true,
+          sourceRoot: '',
+          outDir: 'build'
       }
     },
 
