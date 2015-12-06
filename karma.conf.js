@@ -5,21 +5,45 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
-
+    basePath: './',
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jspm', 'jasmine'],
+    frameworks: ['systemjs', 'jasmine'],
 
-    jspm: {
-      // Edit this to your needs
-      loadFiles: ['src/**/*.ts', 'test/unit/**/*.ts']
+    systemjs: {
+      configFile: 'config.js',
+      config: {
+        paths: {
+          "typescript": "node_modules/typescript/lib/typescript.js",
+          "systemjs": "node_modules/systemjs/dist/system.js",
+          'system-polyfills': 'node_modules/systemjs/dist/system-polyfills.js',
+          'es6-module-loader': 'node_modules/es6-module-loader/dist/es6-module-loader.js'
+        },
+        packages: {
+          'test/unit': {
+            defaultExtension: 'ts'
+          },
+          'typings': {
+            defaultExtension: 'd.ts'
+          },
+          'src': {
+            defaultExtension: 'ts'
+          }
+        },
+        transpiler: 'typescript'
+      },
+      serveFiles: [
+        'src/**/*.ts',
+        'typings/**/*.d.ts',
+        'jspm_packages/**/*'
+      ]
     },
-
-
+    
     // list of files / patterns to load in the browser
-    files: [],
+    files: [
+      'test/unit/hello-world.spec.ts'
+    ],
 
 
     // list of files to exclude
@@ -30,22 +54,9 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-          '**/*.ts': ['tsc']
+
       },
   
-    tscPreprocessor: {
-      compilerOptions: {
-          module: "umd",
-          target: "ES5",
-          noImplicitAny: true,
-          removeComments: true,
-          inlineSourceMap: true,
-          preserveConstEnums: true,
-          sourceRoot: '',
-          outDir: 'build'
-      }
-    },
-
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
